@@ -1,10 +1,13 @@
 package com.giftech.githubuser.ui.home
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.giftech.githubuser.data.User
 import com.giftech.githubuser.databinding.ActivityHomeBinding
+import com.giftech.githubuser.ui.DetailActivity
 import com.giftech.githubuser.viewmodel.ViewModelFactory
 
 class HomeActivity : AppCompatActivity() {
@@ -27,5 +30,13 @@ class HomeActivity : AppCompatActivity() {
             this.layoutManager = LinearLayoutManager(context)
             this.adapter = adapter
         }
+
+        adapter.setOnItemCallback(object : UserAdapter.OnItemClickCallback{
+            override fun onItemClicked(data: User) {
+                val intent = Intent(this@HomeActivity, DetailActivity::class.java)
+                intent.putExtra(DetailActivity.USER_DATA, data)
+                startActivity(intent)
+            }
+        })
     }
 }

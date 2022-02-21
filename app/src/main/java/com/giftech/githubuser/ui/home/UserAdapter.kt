@@ -11,6 +11,7 @@ import com.giftech.githubuser.databinding.ItemUserBinding
 class UserAdapter: RecyclerView.Adapter<UserAdapter.UserViewHolder>() {
 
     private var listUser = ArrayList<User>()
+    private lateinit var onItemClickCallback: OnItemClickCallback
 
     fun setList(list:List<User>){
         listUser.clear()
@@ -42,7 +43,19 @@ class UserAdapter: RecyclerView.Adapter<UserAdapter.UserViewHolder>() {
                     .centerCrop()
                     .circleCrop()
                     .into(ivUser)
+
+                itemView.setOnClickListener {
+                    onItemClickCallback.onItemClicked(user)
+                }
             }
         }
+    }
+
+    interface OnItemClickCallback {
+        fun onItemClicked(data: User)
+    }
+
+    fun setOnItemCallback(onItemClickCallback: OnItemClickCallback){
+        this.onItemClickCallback = onItemClickCallback
     }
 }
