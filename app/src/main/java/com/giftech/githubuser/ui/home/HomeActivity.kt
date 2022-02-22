@@ -18,7 +18,7 @@ class HomeActivity : AppCompatActivity() {
         binding = ActivityHomeBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        val factory = ViewModelFactory.getInstance(this)
+        val factory = ViewModelFactory.getInstance()
         val viewmodel = ViewModelProvider(this,factory)[HomeViewModel::class.java]
         val adapter = UserAdapter()
 

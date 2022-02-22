@@ -6,6 +6,12 @@ import com.giftech.githubuser.utils.DummyData
 
 class MainRepository {
 
+    fun getListUser():LiveData<List<User>>{
+        val listUser = MutableLiveData<List<User>>()
+        listUser.postValue(DummyData.getListUser())
+        return  listUser
+    }
+
     companion object {
         @Volatile
         private var instance: MainRepository? = null
@@ -13,12 +19,6 @@ class MainRepository {
             instance ?: synchronized(this) {
                 instance ?: MainRepository().apply { instance = this }
             }
-    }
-
-    fun getListUser():LiveData<List<User>>{
-        val listUser = MutableLiveData<List<User>>()
-        listUser.postValue(DummyData.getListUser())
-        return  listUser
     }
 
 }
