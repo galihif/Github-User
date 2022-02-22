@@ -11,40 +11,40 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="4dp"
-        android:text="Universitas Gadjah Mada"
+        android:text="@string/example_company"
         style="@style/TextPrimary"
         android:drawablePadding="4dp"
-        android:drawableLeft="@drawable/ic_company"/>
+        android:drawableStart="@drawable/ic_company"/>
 
     <TextView
         android:id="@+id/tv_location"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="4dp"
-        android:text="Yogyakarta"
+        android:text="@string/example_location"
         style="@style/TextPrimary"
         android:drawablePadding="4dp"
-        android:drawableLeft="@drawable/ic_location"/>
+        android:drawableStart="@drawable/ic_location"/>
 
     <TextView
         android:id="@+id/tv_repository"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="4dp"
-        android:text="23 Repositories"
+        android:text="@string/example_repository"
         style="@style/TextPrimary"
         android:drawablePadding="4dp"
-        android:drawableLeft="@drawable/ic_repository"/>
+        android:drawableStart="@drawable/ic_repository"/>
 
     <TextView
         android:id="@+id/tv_follow"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="4dp"
-        android:text="23 Following | 92 Followers"
+        android:text="@string/example_follow"
         style="@style/TextPrimary"
         android:drawablePadding="4dp"
-        android:drawableLeft="@drawable/ic_follow"/>
+        android:drawableStart="@drawable/ic_follow"/>
 
 
 

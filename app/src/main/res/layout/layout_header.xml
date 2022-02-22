@@ -6,6 +6,7 @@
     android:gravity="center_vertical"
     android:orientation="horizontal">
     <ImageView
+        android:contentDescription="@string/user_avatar"
         android:id="@+id/iv_avatar"
         android:layout_width="72dp"
         android:layout_height="72dp"
@@ -20,14 +21,14 @@
             android:id="@+id/iv_name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Galih Indra Firmansyah"
+            android:text="@string/example_name"
             style="@style/TextPrimaryBold"
             android:textSize="24sp"/>
         <TextView
             android:id="@+id/iv_username"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="galihif"
+            android:text="@string/example_username"
             style="@style/TextSecondary"/>
     </LinearLayout>
 </LinearLayout>

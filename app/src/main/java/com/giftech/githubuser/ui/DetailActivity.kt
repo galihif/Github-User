@@ -3,6 +3,7 @@ package com.giftech.githubuser.ui
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.bumptech.glide.Glide
+import com.giftech.githubuser.R
 import com.giftech.githubuser.data.User
 import com.giftech.githubuser.databinding.ActivityDetailBinding
 
@@ -31,8 +32,8 @@ class DetailActivity : AppCompatActivity() {
 
                 desc.tvCompany.text = user?.company
                 desc.tvLocation.text = user?.location
-                desc.tvRepository.text = "${user?.repository} Repositories"
-                desc.tvFollow.text = "${user?.followers} Followers | ${user?.following} Following"
+                desc.tvRepository.text = getString(R.string.format_repository, user?.repository)
+                desc.tvFollow.text = getString(R.string.format_follow, user?.followers, user?.following)
 
             }
         }

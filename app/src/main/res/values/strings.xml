@@ -1,5 +1,17 @@
 <resources>
     <string name="app_name">Github User</string>
     <string name="nama_user">Nama User</string>
+
     <string name="username">username</string>
+    <string name="user_avatar">User Avatar</string>
+
+    <string name="example_follow">23 Following | 92 Followers</string>
+    <string name="example_repository">23 Repositories</string>
+    <string name="example_location">Yogyakarta</string>
+    <string name="example_company">Universitas Gadjah Mada</string>
+    <string name="example_name">Galih Indra Firmansyah</string>
+    <string name="example_username">galihif</string>
+
+    <string name="format_repository">%1$d Repositories</string>
+    <string name="format_follow">%1$d Followers | %2$d Following</string>
 </resources>
