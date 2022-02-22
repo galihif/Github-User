@@ -33,20 +33,18 @@ class UserAdapter: RecyclerView.Adapter<UserAdapter.UserViewHolder>() {
 
     inner class UserViewHolder(private val context: Context,private val binding: ItemUserBinding):RecyclerView.ViewHolder(binding.root) {
         fun bind(user:User){
-            with(binding){
-                tvName.text = user.name
-                tvUsername.text = user.username
+            binding.tvName.text = user.name
+            binding.tvUsername.text = user.username
 
-                Glide
-                    .with(context)
-                    .load(user.avatar)
-                    .centerCrop()
-                    .circleCrop()
-                    .into(ivUser)
+            Glide
+                .with(context)
+                .load(user.avatar)
+                .centerCrop()
+                .circleCrop()
+                .into(binding.ivUser)
 
-                itemView.setOnClickListener {
-                    onItemClickCallback.onItemClicked(user)
-                }
+            itemView.setOnClickListener {
+                onItemClickCallback.onItemClicked(user)
             }
         }
     }

@@ -19,13 +19,11 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
-        <include
-            android:id="@+id/header"
-            layout="@layout/layout_header"/>
+        <include layout="@layout/layout_header"
+            android:id="@+id/header"/>
 
-        <include
-            android:id="@+id/desc"
-            layout="@layout/layout_desc"/>
+        <include layout="@layout/layout_desc"
+            android:id="@+id/desc"/>
 
     </LinearLayout>
 
