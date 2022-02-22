@@ -12,8 +12,7 @@
         android:layout_height="wrap_content"
         android:layout_marginBottom="4dp"
         android:text="Universitas Gadjah Mada"
-        android:textSize="18sp"
-        android:textColor="@color/white_text"
+        style="@style/TextPrimary"
         android:drawablePadding="4dp"
         android:drawableLeft="@drawable/ic_company"/>
 
@@ -23,8 +22,7 @@
         android:layout_height="wrap_content"
         android:layout_marginBottom="4dp"
         android:text="Yogyakarta"
-        android:textSize="18sp"
-        android:textColor="@color/white_text"
+        style="@style/TextPrimary"
         android:drawablePadding="4dp"
         android:drawableLeft="@drawable/ic_location"/>
 
@@ -34,8 +32,7 @@
         android:layout_height="wrap_content"
         android:layout_marginBottom="4dp"
         android:text="23 Repositories"
-        android:textSize="18sp"
-        android:textColor="@color/white_text"
+        style="@style/TextPrimary"
         android:drawablePadding="4dp"
         android:drawableLeft="@drawable/ic_repository"/>
 
@@ -45,8 +42,7 @@
         android:layout_height="wrap_content"
         android:layout_marginBottom="4dp"
         android:text="23 Following | 92 Followers"
-        android:textSize="18sp"
-        android:textColor="@color/white_text"
+        style="@style/TextPrimary"
         android:drawablePadding="4dp"
         android:drawableLeft="@drawable/ic_follow"/>
 

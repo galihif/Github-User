@@ -20,16 +20,14 @@
             android:id="@+id/iv_name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textColor="@color/white_text"
             android:text="Galih Indra Firmansyah"
-            android:textSize="24sp"
-            android:textStyle="bold"/>
+            style="@style/TextPrimaryBold"
+            android:textSize="24sp"/>
         <TextView
             android:id="@+id/iv_username"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="galihif"
-            android:textSize="18sp"
-            android:textColor="@color/grey_text"/>
+            style="@style/TextSecondary"/>
     </LinearLayout>
 </LinearLayout>
