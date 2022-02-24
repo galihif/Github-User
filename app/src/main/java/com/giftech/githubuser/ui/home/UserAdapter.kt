@@ -4,9 +4,9 @@ import android.content.Context
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.bumptech.glide.Glide
 import com.giftech.githubuser.data.User
 import com.giftech.githubuser.databinding.ItemUserBinding
+import com.giftech.githubuser.utils.AppUtils.loadCircleImage
 
 class UserAdapter: RecyclerView.Adapter<UserAdapter.UserViewHolder>() {
 
@@ -36,12 +36,7 @@ class UserAdapter: RecyclerView.Adapter<UserAdapter.UserViewHolder>() {
             binding.tvName.text = user.name
             binding.tvUsername.text = user.username
 
-            Glide
-                .with(context)
-                .load(user.avatar)
-                .centerCrop()
-                .circleCrop()
-                .into(binding.ivUser)
+            binding.ivUser.loadCircleImage(user.avatar)
 
             itemView.setOnClickListener {
                 onItemClickCallback.onItemClicked(user)
