@@ -14,4 +14,5 @@
 
     <string name="format_repository">%1$d Repositories</string>
     <string name="format_follow">%1$d Followers | %2$d Following</string>
+    <string name="search">Search</string>
 </resources>

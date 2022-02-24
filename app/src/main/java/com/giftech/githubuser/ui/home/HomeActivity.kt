@@ -2,12 +2,14 @@ package com.giftech.githubuser.ui.home
 
 import android.content.Intent
 import android.os.Bundle
+import android.view.Menu
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.giftech.githubuser.R
 import com.giftech.githubuser.data.User
 import com.giftech.githubuser.databinding.ActivityHomeBinding
-import com.giftech.githubuser.ui.DetailActivity
+import com.giftech.githubuser.ui.detail.DetailActivity
 import com.giftech.githubuser.viewmodel.ViewModelFactory
 
 class HomeActivity : AppCompatActivity() {
@@ -38,5 +40,11 @@ class HomeActivity : AppCompatActivity() {
                 startActivity(intent)
             }
         })
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        val inflater = menuInflater
+        inflater.inflate(R.menu.item_menu, menu)
+        return true
     }
 }
