@@ -17,6 +17,8 @@ class SplashActivity : AppCompatActivity() {
 
         AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
 
+        supportActionBar?.hide()
+
         Handler(Looper.getMainLooper()).postDelayed({
             val intent = Intent(this@SplashActivity, HomeActivity::class.java)
             startActivity(intent)
