@@ -19,10 +19,10 @@ class HomeActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         val factory = ViewModelFactory.getInstance()
-        val viewmodel = ViewModelProvider(this,factory)[HomeViewModel::class.java]
+        val viewModel = ViewModelProvider(this,factory)[HomeViewModel::class.java]
         val adapter = UserAdapter()
 
-        viewmodel.getListUser().observe(this, {listUser ->
+        viewModel.getListUser().observe(this, { listUser ->
             adapter.setList(listUser)
         })
 
