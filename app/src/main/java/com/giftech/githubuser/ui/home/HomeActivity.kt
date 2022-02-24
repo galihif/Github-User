@@ -5,7 +5,6 @@ import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.view.Menu
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.SearchView
 import androidx.lifecycle.ViewModelProvider
@@ -19,22 +18,28 @@ import com.giftech.githubuser.viewmodel.ViewModelFactory
 class HomeActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityHomeBinding
+    private lateinit var viewModel: HomeViewModel
+    private lateinit var adapter: UserAdapter
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityHomeBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
         val factory = ViewModelFactory.getInstance()
-        val viewModel = ViewModelProvider(this,factory)[HomeViewModel::class.java]
-        val adapter = UserAdapter()
+        viewModel = ViewModelProvider(this,factory)[HomeViewModel::class.java]
+        adapter = UserAdapter()
 
         viewModel.getListUser().observe(this, { listUser ->
             adapter.setList(listUser)
+            showListUser()
         })
 
+    }
+
+    private fun showListUser() {
         with(binding.rvUser){
-            this.layoutManager = LinearLayoutManager(context)
-            this.adapter = adapter
+            layoutManager = LinearLayoutManager(context)
+            adapter = this@HomeActivity.adapter
         }
 
         adapter.setOnItemCallback(object : UserAdapter.OnItemClickCallback{
@@ -43,6 +48,13 @@ class HomeActivity : AppCompatActivity() {
                 intent.putExtra(DetailActivity.USER_DATA, data)
                 startActivity(intent)
             }
+        })
+    }
+
+    private fun searchUser(keyword:String){
+        viewModel.getSearchedUser(keyword).observe(this,{
+            adapter.setList(it)
+            showListUser()
         })
     }
 
@@ -60,7 +72,7 @@ class HomeActivity : AppCompatActivity() {
             Gunakan method ini ketika search selesai atau OK
              */
             override fun onQueryTextSubmit(query: String): Boolean {
-                Toast.makeText(this@HomeActivity, query, Toast.LENGTH_SHORT).show()
+                searchUser(query)
                 searchView.clearFocus()
                 return true
             }
