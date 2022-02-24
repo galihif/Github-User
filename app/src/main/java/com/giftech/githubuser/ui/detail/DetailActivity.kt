@@ -1,4 +1,4 @@
-package com.giftech.githubuser.ui
+package com.giftech.githubuser.ui.detail
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
@@ -18,6 +18,8 @@ class DetailActivity : AppCompatActivity() {
         val extras = intent.extras
         if(extras != null){
             val user = extras.getParcelable<User>(USER_DATA)
+
+            supportActionBar?.title = user?.username
 
             with(binding){
                 header.ivAvatar.loadCircleImage(user?.avatar)
