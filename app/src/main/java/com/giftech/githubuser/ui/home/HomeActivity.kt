@@ -5,6 +5,7 @@ import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.view.Menu
+import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.SearchView
 import androidx.lifecycle.ViewModelProvider
@@ -34,6 +35,24 @@ class HomeActivity : AppCompatActivity() {
             showListUser()
         })
 
+        viewModel.loading.observe(this, {loading ->
+            if(loading){
+                showLoading(true)
+            } else {
+                showLoading(false)
+            }
+        })
+
+    }
+
+    private fun showLoading(loading: Boolean) {
+        if(loading){
+            binding.loading.root.visibility = View.VISIBLE
+            binding.rvUser.visibility = View.INVISIBLE
+        } else {
+            binding.loading.root.visibility = View.INVISIBLE
+            binding.rvUser.visibility = View.VISIBLE
+        }
     }
 
     private fun showListUser() {
