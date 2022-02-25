@@ -5,6 +5,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import com.giftech.githubuser.data.MainRepository
 import com.giftech.githubuser.di.Injection
+import com.giftech.githubuser.ui.detail.DetailViewModel
 import com.giftech.githubuser.ui.home.HomeViewModel
 
 class ViewModelFactory private constructor(private val mainRepository: MainRepository)
@@ -16,6 +17,10 @@ class ViewModelFactory private constructor(private val mainRepository: MainRepos
             modelClass.isAssignableFrom(HomeViewModel::class.java)->{
                 return HomeViewModel(mainRepository) as T
             }
+            modelClass.isAssignableFrom(DetailViewModel::class.java)->{
+                return DetailViewModel(mainRepository) as T
+            }
+
             else -> throw Throwable("Unknown ViewModel class: " + modelClass.name)
         }
     }
