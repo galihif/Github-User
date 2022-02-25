@@ -30,10 +30,13 @@ class HomeActivity : AppCompatActivity() {
         viewModel = ViewModelProvider(this,factory)[HomeViewModel::class.java]
         adapter = UserAdapter()
 
-        viewModel.getListUser().observe(this, { listUser ->
+        val usernameDummy = "galih"
+
+        viewModel.getSearchedUser(usernameDummy).observe(this, { listUser ->
             adapter.setList(listUser)
             showListUser()
         })
+
 
         viewModel.loading.observe(this, {loading ->
             if(loading){
