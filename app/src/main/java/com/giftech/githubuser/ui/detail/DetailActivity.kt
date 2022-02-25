@@ -5,10 +5,12 @@ import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
 import com.giftech.githubuser.R
+import com.giftech.githubuser.adapter.SectionsPagerAdapter
 import com.giftech.githubuser.data.User
 import com.giftech.githubuser.databinding.ActivityDetailBinding
 import com.giftech.githubuser.utils.AppUtils.loadCircleImage
 import com.giftech.githubuser.viewmodel.ViewModelFactory
+import com.google.android.material.tabs.TabLayoutMediator
 
 class DetailActivity : AppCompatActivity() {
 
@@ -39,6 +41,14 @@ class DetailActivity : AppCompatActivity() {
                     showLoading(false)
                 }
             })
+
+            val sectionsPagerAdapter = SectionsPagerAdapter(this)
+            sectionsPagerAdapter.username = user.username
+            binding.viewPager.adapter = sectionsPagerAdapter
+
+            TabLayoutMediator(binding.tabs, binding.viewPager){tab, position ->
+                tab.text = TAB_TITLES[position]
+            }.attach()
         }
     }
 
@@ -69,5 +79,9 @@ class DetailActivity : AppCompatActivity() {
 
     companion object{
         const val USER_DATA = "USER_DATA"
+        private val TAB_TITLES = arrayListOf<String>(
+            "FOLLOWERS",
+            "FOLLOWING"
+        )
     }
 }
