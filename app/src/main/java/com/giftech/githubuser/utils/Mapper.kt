@@ -23,8 +23,8 @@ object Mapper {
             name = detailUser.name,
             username = detailUser.login,
             avatar = detailUser.avatarUrl,
-            company = detailUser.company,
-            location = detailUser.location,
+            company = detailUser.company ?: "Company Not Found",
+            location = detailUser.location ?: "Location Not Found",
             repository = detailUser.publicRepos,
             following = detailUser.following,
             followers = detailUser.followers
