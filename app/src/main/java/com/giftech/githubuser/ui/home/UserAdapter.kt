@@ -33,7 +33,7 @@ class UserAdapter: RecyclerView.Adapter<UserAdapter.UserViewHolder>() {
 
     inner class UserViewHolder(private val context: Context,private val binding: ItemUserBinding):RecyclerView.ViewHolder(binding.root) {
         fun bind(user:User){
-            binding.tvName.text = user.name
+//            binding.tvName.text = user.name
             binding.tvUsername.text = user.username
 
             binding.ivUser.loadCircleImage(user.avatar)
