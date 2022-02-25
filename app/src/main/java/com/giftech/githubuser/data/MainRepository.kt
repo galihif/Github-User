@@ -38,11 +38,13 @@ class MainRepository(
     }
 
     fun getDetailUser(username:String):LiveData<User>{
+        _loading.postValue(true)
         val detailUser = MutableLiveData<User>()
         remoteDataSource.getDetailuser(username, object :RemoteDataSource.GetDetailUserCallback{
             override fun onResponseReceived(res: DetailUserResponse) {
                 val userRes = Mapper.mapDetailUserToUser(res)
                 detailUser.postValue(userRes)
+                _loading.postValue(false)
             }
         })
         return detailUser
