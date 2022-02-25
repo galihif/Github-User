@@ -92,7 +92,7 @@ data class DetailUserResponse(
 	val following: Int,
 
 	@field:SerializedName("name")
-	val name: String,
+	val name: String?,
 
 	@field:SerializedName("location")
 	val location: String?,

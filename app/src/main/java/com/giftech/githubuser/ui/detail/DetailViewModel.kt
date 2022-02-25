@@ -11,4 +11,8 @@ class DetailViewModel(private val mainRepository: MainRepository):ViewModel() {
 
     fun getDetailUser(username:String):LiveData<User> = mainRepository.getDetailUser(username)
 
+    fun getUserFollowers(username:String):LiveData<List<User>> = mainRepository.getUserFollowersList(username)
+
+    fun getUserFollowing(username:String):LiveData<List<User>> = mainRepository.getUserFollowingList(username)
+
 }
