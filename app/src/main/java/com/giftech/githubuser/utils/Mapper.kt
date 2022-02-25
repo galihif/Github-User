@@ -1,11 +1,12 @@
 package com.giftech.githubuser.utils
 
 import com.giftech.githubuser.data.User
-import com.giftech.githubuser.data.source.remote.response.GithubUser
+import com.giftech.githubuser.data.source.remote.response.DetailUserResponse
+import com.giftech.githubuser.data.source.remote.response.SearchUserResponse
 
 object Mapper {
 
-    fun mapListGithubUserToUser(list:List<GithubUser>):List<User>{
+    fun mapListGithubUserToUser(list:List<SearchUserResponse.GithubUser>):List<User>{
         val listUser = arrayListOf<User>()
         list.forEach {
             val user = User(
@@ -15,6 +16,19 @@ object Mapper {
             listUser.add(user)
         }
         return listUser
+    }
+
+    fun mapDetailUserToUser(detailUser: DetailUserResponse): User {
+        return User(
+            name = detailUser.name,
+            username = detailUser.login,
+            avatar = detailUser.avatarUrl,
+            company = detailUser.company,
+            location = detailUser.location,
+            repository = detailUser.publicRepos,
+            following = detailUser.following,
+            followers = detailUser.followers
+        )
     }
 
 }
