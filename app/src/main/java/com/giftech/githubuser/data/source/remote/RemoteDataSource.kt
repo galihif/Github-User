@@ -1,7 +1,7 @@
 package com.giftech.githubuser.data.source.remote
 
 import com.giftech.githubuser.data.source.remote.network.ApiConfig
-import com.giftech.githubuser.data.source.remote.response.GithubUser
+import com.giftech.githubuser.data.source.remote.response.DetailUserResponse
 import com.giftech.githubuser.data.source.remote.response.SearchUserResponse
 import retrofit2.Call
 import retrofit2.Response
@@ -28,9 +28,33 @@ class RemoteDataSource {
         })
     }
 
+    fun getDetailuser(username:String, callback:GetDetailUserCallback){
+        val client = ApiConfig.getApiService().getDetailUser(username)
+        client.enqueue(object : retrofit2.Callback<DetailUserResponse>{
+            override fun onResponse(
+                call: Call<DetailUserResponse>,
+                response: Response<DetailUserResponse>
+            ) {
+                if(response.isSuccessful){
+                    val res = response.body()
+                    callback.onResponseReceived(res!!)
+                }
+            }
+
+            override fun onFailure(call: Call<DetailUserResponse>, t: Throwable) {
+//                TODO("Not yet implemented")
+            }
+
+        })
+    }
+
 
     interface GetSearchedUserCallback{
-        fun onResponseReceived(res:List<GithubUser>)
+        fun onResponseReceived(res:List<SearchUserResponse.GithubUser>)
+    }
+
+    interface GetDetailUserCallback{
+        fun onResponseReceived(res:DetailUserResponse)
     }
 
     companion object{

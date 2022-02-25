@@ -3,7 +3,8 @@ package com.giftech.githubuser.data
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.giftech.githubuser.data.source.remote.RemoteDataSource
-import com.giftech.githubuser.data.source.remote.response.GithubUser
+import com.giftech.githubuser.data.source.remote.response.DetailUserResponse
+import com.giftech.githubuser.data.source.remote.response.SearchUserResponse
 import com.giftech.githubuser.utils.Mapper
 import com.giftech.githubuser.utils.UsersData
 
@@ -27,13 +28,24 @@ class MainRepository(
         _loading.postValue(true)
         val listSearchedUser = MutableLiveData<List<User>>()
         remoteDataSource.getSearchedUser(keyword, object : RemoteDataSource.GetSearchedUserCallback{
-            override fun onResponseReceived(res: List<GithubUser>) {
+            override fun onResponseReceived(res: List<SearchUserResponse.GithubUser>) {
                 val listRes = Mapper.mapListGithubUserToUser(res)
                 listSearchedUser.postValue(listRes)
                 _loading.postValue(false)
             }
         })
         return listSearchedUser
+    }
+
+    fun getDetailUser(username:String):LiveData<User>{
+        val detailUser = MutableLiveData<User>()
+        remoteDataSource.getDetailuser(username, object :RemoteDataSource.GetDetailUserCallback{
+            override fun onResponseReceived(res: DetailUserResponse) {
+                val userRes = Mapper.mapDetailUserToUser(res)
+                detailUser.postValue(userRes)
+            }
+        })
+        return detailUser
     }
 
     companion object {
