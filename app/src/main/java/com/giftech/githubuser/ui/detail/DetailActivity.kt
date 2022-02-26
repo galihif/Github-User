@@ -42,18 +42,28 @@ class DetailActivity : AppCompatActivity() {
                 }
             })
 
-            val sectionsPagerAdapter = SectionsPagerAdapter(this)
-            sectionsPagerAdapter.username = user.username
-            binding.viewPager.adapter = sectionsPagerAdapter
+            showTabLayout(user.username)
 
-            TabLayoutMediator(binding.tabs, binding.viewPager){tab, position ->
+
+
+        }
+    }
+
+    private fun showTabLayout(username:String) {
+        val sectionsPagerAdapter = SectionsPagerAdapter(this)
+        sectionsPagerAdapter.username = username
+
+        with(binding.sectionFollowList){
+            viewPager.adapter = sectionsPagerAdapter
+
+            TabLayoutMediator(tabs, viewPager){tab, position ->
                 tab.text = TAB_TITLES[position]
             }.attach()
         }
     }
 
     private fun populateView(user: User) {
-        with(binding){
+        with(binding.sectionProfile){
             header.ivAvatar.loadCircleImage(this@DetailActivity,user.avatar)
 
             header.ivName.text = user.name
@@ -70,10 +80,10 @@ class DetailActivity : AppCompatActivity() {
     private fun showLoading(loading: Boolean) {
         if(loading){
             binding.loading.root.visibility = View.VISIBLE
-            binding.sectionProfile.visibility = View.INVISIBLE
+            binding.sectionProfile.root.visibility = View.INVISIBLE
         } else {
             binding.loading.root.visibility = View.INVISIBLE
-            binding.sectionProfile.visibility = View.VISIBLE
+            binding.sectionProfile.root.visibility = View.VISIBLE
         }
     }
 

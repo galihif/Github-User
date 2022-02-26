@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    android:id="@+id/section_profile"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/grey_bg"
+    android:orientation="vertical"
+    android:paddingVertical="16dp"
+    android:paddingHorizontal="18dp"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <include layout="@layout/layout_header"
+        android:id="@+id/header"/>
+
+    <include layout="@layout/layout_desc"
+        android:id="@+id/desc"/>
+
+</LinearLayout>
