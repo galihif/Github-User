@@ -36,10 +36,20 @@ class FollowingFragment() : Fragment() {
 
         val username = arguments?.getString(FollowersFragment.USERNAME)
 
+        showLoading(true)
         viewModel.getUserFollowing(username!!).observe(viewLifecycleOwner, {
             adapter.setList(it)
             showListUser()
+            showLoading(false)
         })
+    }
+
+    private fun showLoading(loading:Boolean){
+        if(loading){
+            binding.loading.visibility = View.VISIBLE
+        } else{
+            binding.loading.visibility = View.INVISIBLE
+        }
     }
 
     private fun showListUser() {
