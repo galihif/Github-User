@@ -9,8 +9,8 @@ import com.giftech.githubuser.R
 
 object AppUtils {
 
-    fun ImageView.loadCircleImage(imageSource : String?) {
-        Glide.with(context.applicationContext)
+    fun ImageView.loadCircleImage(context: Context,imageSource : String?) {
+        Glide.with(context)
             .load(imageSource)
             .centerCrop()
             .circleCrop()

@@ -54,7 +54,7 @@ class DetailActivity : AppCompatActivity() {
 
     private fun populateView(user: User) {
         with(binding){
-            header.ivAvatar.loadCircleImage(user.avatar)
+            header.ivAvatar.loadCircleImage(this@DetailActivity,user.avatar)
 
             header.ivName.text = user.name
             header.ivUsername.text = user.username
@@ -79,7 +79,7 @@ class DetailActivity : AppCompatActivity() {
 
     companion object{
         const val USER_DATA = "USER_DATA"
-        private val TAB_TITLES = arrayListOf<String>(
+        private val TAB_TITLES = arrayListOf(
             "FOLLOWERS",
             "FOLLOWING"
         )
