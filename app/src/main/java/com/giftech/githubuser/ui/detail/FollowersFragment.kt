@@ -13,7 +13,7 @@ import com.giftech.githubuser.databinding.FragmentFollowersBinding
 import com.giftech.githubuser.ui.home.UserAdapter
 import com.giftech.githubuser.viewmodel.ViewModelFactory
 
-class FollowersFragment(private val username: String) : Fragment() {
+class FollowersFragment() : Fragment() {
 
     private lateinit var binding: FragmentFollowersBinding
     private lateinit var adapter: UserAdapter
@@ -34,7 +34,9 @@ class FollowersFragment(private val username: String) : Fragment() {
         val viewModel = ViewModelProvider(this,factory)[DetailViewModel::class.java]
         adapter = UserAdapter()
 
-        viewModel.getUserFollowers(username).observe(viewLifecycleOwner, {
+        val username = arguments?.getString(USERNAME)
+
+        viewModel.getUserFollowers(username!!).observe(viewLifecycleOwner, {
             adapter.setList(it)
             showListUser()
         })
@@ -51,7 +53,12 @@ class FollowersFragment(private val username: String) : Fragment() {
                 intent.putExtra(DetailActivity.USER_DATA, data)
                 startActivity(intent)
             }
+
         })
+    }
+
+    companion object{
+        const val USERNAME = "USERNAME"
     }
 
 }
