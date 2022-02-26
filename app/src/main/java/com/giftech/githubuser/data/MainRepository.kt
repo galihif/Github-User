@@ -7,7 +7,6 @@ import com.giftech.githubuser.data.source.remote.response.DetailUserResponse
 import com.giftech.githubuser.data.source.remote.response.SearchUserResponse
 import com.giftech.githubuser.data.source.remote.response.UserFollowResponse
 import com.giftech.githubuser.utils.Mapper
-import com.giftech.githubuser.utils.UsersData
 
 class MainRepository(
     private val remoteDataSource: RemoteDataSource
@@ -15,15 +14,6 @@ class MainRepository(
 
     private val _loading = MutableLiveData<Boolean>()
     val loading:LiveData<Boolean> = _loading
-
-
-    fun getListUser():LiveData<List<User>>{
-        _loading.postValue(true)
-        val listUser = MutableLiveData<List<User>>()
-        listUser.postValue(UsersData.listData)
-        _loading.postValue(false)
-        return  listUser
-    }
 
     fun getSearchedUser(keyword:String):LiveData<List<User>>{
         _loading.postValue(true)

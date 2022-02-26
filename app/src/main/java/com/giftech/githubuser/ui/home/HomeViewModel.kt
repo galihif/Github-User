@@ -9,8 +9,6 @@ class HomeViewModel(private val mainRepository: MainRepository):ViewModel() {
 
     val loading = mainRepository.loading
 
-    fun getListUser():LiveData<List<User>> = mainRepository.getListUser()
-
     fun getSearchedUser(keyword:String):LiveData<List<User>> = mainRepository.getSearchedUser(keyword)
 
 }
