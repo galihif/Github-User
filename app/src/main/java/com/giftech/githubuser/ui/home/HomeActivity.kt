@@ -32,20 +32,26 @@ class HomeActivity : AppCompatActivity() {
 
         val usernameDummy = "galih"
 
-        viewModel.getSearchedUser(usernameDummy).observe(this, { listUser ->
-            adapter.setList(listUser)
+        viewModel.getSearchedUser(usernameDummy).observe(this, {
+            adapter.setList(it)
             showListUser()
+            showEmpty(it.isEmpty())
         })
 
-
-        viewModel.loading.observe(this, {loading ->
-            if(loading){
-                showLoading(true)
-            } else {
-                showLoading(false)
-            }
+        viewModel.loading.observe(this, {
+            showLoading(it)
         })
 
+    }
+
+    private fun showEmpty(listEmpty: Boolean) {
+        if(listEmpty){
+            binding.empty.root.visibility = View.VISIBLE
+            binding.rvUser.visibility = View.INVISIBLE
+        }else{
+            binding.empty.root.visibility = View.INVISIBLE
+            binding.rvUser.visibility = View.VISIBLE
+        }
     }
 
     private fun showLoading(loading: Boolean) {
@@ -77,6 +83,7 @@ class HomeActivity : AppCompatActivity() {
         viewModel.getSearchedUser(keyword).observe(this,{
             adapter.setList(it)
             showListUser()
+            showEmpty(it.isEmpty())
         })
     }
 
@@ -90,18 +97,13 @@ class HomeActivity : AppCompatActivity() {
         searchView.setSearchableInfo(searchManager.getSearchableInfo(componentName))
         searchView.queryHint = "Search User"
         searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
-            /*
-            Gunakan method ini ketika search selesai atau OK
-             */
+
             override fun onQueryTextSubmit(query: String): Boolean {
                 searchUser(query)
                 searchView.clearFocus()
                 return true
             }
 
-            /*
-            Gunakan method ini untuk merespon tiap perubahan huruf pada searchView
-             */
             override fun onQueryTextChange(newText: String): Boolean {
                 return false
             }
