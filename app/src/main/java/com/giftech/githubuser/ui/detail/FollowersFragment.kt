@@ -13,7 +13,7 @@ import com.giftech.githubuser.databinding.FragmentFollowersBinding
 import com.giftech.githubuser.ui.home.UserAdapter
 import com.giftech.githubuser.viewmodel.ViewModelFactory
 
-class FollowersFragment() : Fragment() {
+class FollowersFragment : Fragment() {
 
     private lateinit var binding: FragmentFollowersBinding
     private lateinit var adapter: UserAdapter
