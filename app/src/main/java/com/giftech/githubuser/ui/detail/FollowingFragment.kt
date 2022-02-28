@@ -60,7 +60,7 @@ class FollowingFragment() : Fragment() {
         adapter.setOnItemCallback(object : UserAdapter.OnItemClickCallback{
             override fun onItemClicked(data: User) {
                 val intent = Intent(requireContext(), DetailActivity::class.java)
-                intent.putExtra(DetailActivity.USER_DATA, data)
+                intent.putExtra(DetailActivity.USERNAME, data.username)
                 startActivity(intent)
             }
         })

@@ -26,11 +26,11 @@ class DetailActivity : AppCompatActivity() {
 
         val extras = intent.extras
         if(extras != null){
-            val user = extras.getParcelable<User>(USER_DATA)
+            val username = extras.getString(USERNAME,"")
 
-            supportActionBar?.title = user?.username
+            supportActionBar?.title = username
 
-            viewModel.getDetailUser(user?.username!!).observe(this, {
+            viewModel.getDetailUser(username).observe(this, {
                 populateView(it)
             })
 
@@ -42,9 +42,7 @@ class DetailActivity : AppCompatActivity() {
                 }
             })
 
-            showTabLayout(user.username)
-
-
+            showTabLayout(username)
 
         }
     }
@@ -88,7 +86,7 @@ class DetailActivity : AppCompatActivity() {
     }
 
     companion object{
-        const val USER_DATA = "USER_DATA"
+        const val USERNAME = "USERNAME"
         private val TAB_TITLES = arrayListOf(
             "FOLLOWERS",
             "FOLLOWING"
