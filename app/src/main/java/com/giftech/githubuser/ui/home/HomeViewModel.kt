@@ -8,6 +8,7 @@ import com.giftech.githubuser.data.User
 class HomeViewModel(private val mainRepository: MainRepository):ViewModel() {
 
     val loading = mainRepository.loading
+    val error = mainRepository.error
 
     fun getSearchedUser(keyword:String):LiveData<List<User>> = mainRepository.getSearchedUser(keyword)
 

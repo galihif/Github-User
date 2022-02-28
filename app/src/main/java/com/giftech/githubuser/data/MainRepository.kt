@@ -15,6 +15,9 @@ class MainRepository(
     private val _loading = MutableLiveData<Boolean>()
     val loading:LiveData<Boolean> = _loading
 
+    private val _error = MutableLiveData<String>()
+    val error:LiveData<String> = _error
+
     fun getSearchedUser(keyword:String):LiveData<List<User>>{
         _loading.postValue(true)
         val listSearchedUser = MutableLiveData<List<User>>()
@@ -22,6 +25,11 @@ class MainRepository(
             override fun onResponseReceived(res: List<SearchUserResponse.GithubUser>) {
                 val listRes = Mapper.mapListGithubUserToUser(res)
                 listSearchedUser.postValue(listRes)
+                _loading.postValue(false)
+            }
+
+            override fun onErrorReceived(errorMessage: String) {
+                _error.postValue(errorMessage)
                 _loading.postValue(false)
             }
         })
@@ -37,6 +45,11 @@ class MainRepository(
                 detailUser.postValue(userRes)
                 _loading.postValue(false)
             }
+
+            override fun onErrorReceived(errorMessage: String) {
+                _error.postValue(errorMessage)
+                _loading.postValue(false)
+            }
         })
         return detailUser
     }
@@ -48,6 +61,11 @@ class MainRepository(
                 val listRes = Mapper.mapListUserFollowersToUser(res)
                 listFollowers.postValue(listRes)
             }
+
+            override fun onErrorReceived(errorMessage: String) {
+                _error.postValue(errorMessage)
+                _loading.postValue(false)
+            }
         })
         return listFollowers
     }
@@ -58,6 +76,11 @@ class MainRepository(
             override fun onResponseReceived(res: List<UserFollowResponse>) {
                 val listRes = Mapper.mapListUserFollowersToUser(res)
                 listFollowers.postValue(listRes)
+            }
+
+            override fun onErrorReceived(errorMessage: String) {
+                _error.postValue(errorMessage)
+                _loading.postValue(false)
             }
         })
         return listFollowers

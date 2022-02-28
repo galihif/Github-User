@@ -8,6 +8,7 @@ import com.giftech.githubuser.R
 import com.giftech.githubuser.adapter.SectionsPagerAdapter
 import com.giftech.githubuser.data.User
 import com.giftech.githubuser.databinding.ActivityDetailBinding
+import com.giftech.githubuser.utils.AppUtils
 import com.giftech.githubuser.utils.AppUtils.loadCircleImage
 import com.giftech.githubuser.viewmodel.ViewModelFactory
 import com.google.android.material.tabs.TabLayoutMediator
@@ -34,13 +35,13 @@ class DetailActivity : AppCompatActivity() {
                 populateView(it)
             })
 
-            viewModel.loading.observe(this, {loading ->
-                if(loading){
-                    showLoading(true)
-                } else {
-                    showLoading(false)
-                }
-            })
+            viewModel.loading.observe(this){
+                showLoading(it)
+            }
+
+            viewModel.error.observe(this){
+                AppUtils.showToast(this, it)
+            }
 
             showTabLayout(username)
 

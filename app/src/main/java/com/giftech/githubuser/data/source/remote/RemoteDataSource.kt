@@ -23,7 +23,7 @@ class RemoteDataSource {
             }
 
             override fun onFailure(call: Call<SearchUserResponse>, t: Throwable) {
-//                TODO("Not yet implemented")
+                callback.onErrorReceived(t.message.toString())
             }
 
         })
@@ -43,7 +43,7 @@ class RemoteDataSource {
             }
 
             override fun onFailure(call: Call<DetailUserResponse>, t: Throwable) {
-//                TODO("Not yet implemented")
+                callback.onErrorReceived(t.message.toString())
             }
 
         })
@@ -63,7 +63,7 @@ class RemoteDataSource {
             }
 
             override fun onFailure(call: Call<List<UserFollowResponse>>, t: Throwable) {
-//                TODO("Not yet implemented")
+                callback.onErrorReceived(t.message.toString())
             }
 
         })
@@ -83,7 +83,7 @@ class RemoteDataSource {
             }
 
             override fun onFailure(call: Call<List<UserFollowResponse>>, t: Throwable) {
-//                TODO("Not yet implemented")
+                callback.onErrorReceived(t.message.toString())
             }
 
         })
@@ -92,18 +92,22 @@ class RemoteDataSource {
 
     interface GetSearchedUserCallback{
         fun onResponseReceived(res:List<SearchUserResponse.GithubUser>)
+        fun onErrorReceived(errorMessage:String)
     }
 
     interface GetDetailUserCallback{
         fun onResponseReceived(res:DetailUserResponse)
+        fun onErrorReceived(errorMessage:String)
     }
 
     interface GetUserFollowersListCallback{
         fun onResponseReceived(res:List<UserFollowResponse>)
+        fun onErrorReceived(errorMessage:String)
     }
 
     interface GetUserFollowingListCallback{
         fun onResponseReceived(res:List<UserFollowResponse>)
+        fun onErrorReceived(errorMessage:String)
     }
 
     companion object{

@@ -15,6 +15,7 @@ import com.giftech.githubuser.adapter.UserAdapter
 import com.giftech.githubuser.data.User
 import com.giftech.githubuser.databinding.ActivityHomeBinding
 import com.giftech.githubuser.ui.detail.DetailActivity
+import com.giftech.githubuser.utils.AppUtils
 import com.giftech.githubuser.viewmodel.ViewModelFactory
 
 class HomeActivity : AppCompatActivity() {
@@ -41,6 +42,10 @@ class HomeActivity : AppCompatActivity() {
 
         viewModel.loading.observe(this){
             showLoading(it)
+        }
+
+        viewModel.error.observe(this){
+            AppUtils.showToast(this, it)
         }
 
     }

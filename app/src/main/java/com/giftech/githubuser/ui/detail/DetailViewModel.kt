@@ -8,6 +8,7 @@ import com.giftech.githubuser.data.User
 class DetailViewModel(private val mainRepository: MainRepository):ViewModel() {
 
     val loading = mainRepository.loading
+    val error = mainRepository.error
 
     fun getDetailUser(username:String):LiveData<User> = mainRepository.getDetailUser(username)
 
