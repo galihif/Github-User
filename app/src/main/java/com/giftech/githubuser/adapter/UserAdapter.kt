@@ -3,6 +3,7 @@ package com.giftech.githubuser.adapter
 import android.content.Context
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.giftech.githubuser.data.User
 import com.giftech.githubuser.databinding.ItemUserBinding
@@ -10,13 +11,14 @@ import com.giftech.githubuser.utils.AppUtils.loadCircleImage
 
 class UserAdapter: RecyclerView.Adapter<UserAdapter.UserViewHolder>() {
 
-    private var listUser = ArrayList<User>()
+    private var oldListUser = emptyList<User>()
     private lateinit var onItemClickCallback: OnItemClickCallback
 
-    fun setList(list:List<User>){
-        listUser.clear()
-        listUser.addAll(list)
-        notifyDataSetChanged()
+    fun setList(newList:List<User>){
+        val diffUtil = UserDiffUtil(oldListUser, newList)
+        val diffResult = DiffUtil.calculateDiff(diffUtil)
+        oldListUser = newList
+        diffResult.dispatchUpdatesTo(this)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): UserViewHolder {
@@ -25,11 +27,11 @@ class UserAdapter: RecyclerView.Adapter<UserAdapter.UserViewHolder>() {
     }
 
     override fun onBindViewHolder(holder: UserViewHolder, position: Int) {
-        val user = listUser[position]
+        val user = oldListUser[position]
         holder.bind(user)
     }
 
-    override fun getItemCount(): Int = listUser.size
+    override fun getItemCount(): Int = oldListUser.size
 
     inner class UserViewHolder(private val context: Context,private val binding: ItemUserBinding):RecyclerView.ViewHolder(binding.root) {
         fun bind(user:User){
