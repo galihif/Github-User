@@ -38,9 +38,9 @@ class HomeActivity : AppCompatActivity() {
             showEmpty(it.isEmpty())
         })
 
-        viewModel.loading.observe(this, {
+        viewModel.loading.observe(this){
             showLoading(it)
-        })
+        }
 
     }
 
