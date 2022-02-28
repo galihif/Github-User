@@ -13,12 +13,12 @@ class ViewModelFactory private constructor(private val mainRepository: MainRepos
 
     @Suppress("UNCHECKED_CAST")
     override fun <T : ViewModel?> create(modelClass: Class<T>): T {
-        when{
+        return when{
             modelClass.isAssignableFrom(HomeViewModel::class.java)->{
-                return HomeViewModel(mainRepository) as T
+                HomeViewModel(mainRepository) as T
             }
             modelClass.isAssignableFrom(DetailViewModel::class.java)->{
-                return DetailViewModel(mainRepository) as T
+                DetailViewModel(mainRepository) as T
             }
 
             else -> throw Throwable("Unknown ViewModel class: " + modelClass.name)
