@@ -18,6 +18,7 @@ data class SearchUserResponse(
 		@field:SerializedName("login")
 		val login: String? = null,
 
+		@field:SerializedName("avatar_url")
 		val avatarUrl: String? = null,
 
 		@field:SerializedName("events_url")
