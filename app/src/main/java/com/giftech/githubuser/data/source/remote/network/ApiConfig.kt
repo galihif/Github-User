@@ -9,7 +9,7 @@ class ApiConfig {
 
     companion object{
 
-        const val ROOT = "https://api.github.com"
+        private const val ROOT = "https://api.github.com"
 
         fun getApiService():ApiService{
             val loggingInterceptor = HttpLoggingInterceptor().setLevel(HttpLoggingInterceptor.Level.BODY)
