@@ -1,4 +1,4 @@
-package com.giftech.githubuser.ui.home
+package com.giftech.githubuser.adapter
 
 import android.content.Context
 import android.view.LayoutInflater
@@ -19,7 +19,7 @@ class UserAdapter: RecyclerView.Adapter<UserAdapter.UserViewHolder>() {
         notifyDataSetChanged()
     }
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int):UserViewHolder {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): UserViewHolder {
         val binding = ItemUserBinding.inflate(LayoutInflater.from(parent.context), parent, false)
         return UserViewHolder(parent.context,binding)
     }

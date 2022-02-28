@@ -11,6 +11,7 @@ import androidx.appcompat.widget.SearchView
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.giftech.githubuser.R
+import com.giftech.githubuser.adapter.UserAdapter
 import com.giftech.githubuser.data.User
 import com.giftech.githubuser.databinding.ActivityHomeBinding
 import com.giftech.githubuser.ui.detail.DetailActivity

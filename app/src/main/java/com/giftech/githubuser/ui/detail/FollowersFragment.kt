@@ -10,7 +10,7 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.giftech.githubuser.data.User
 import com.giftech.githubuser.databinding.FragmentFollowersBinding
-import com.giftech.githubuser.ui.home.UserAdapter
+import com.giftech.githubuser.adapter.UserAdapter
 import com.giftech.githubuser.viewmodel.ViewModelFactory
 
 class FollowersFragment : Fragment() {
