@@ -4,12 +4,14 @@ import com.giftech.githubuser.data.source.remote.network.ApiConfig
 import com.giftech.githubuser.data.source.remote.response.DetailUserResponse
 import com.giftech.githubuser.data.source.remote.response.SearchUserResponse
 import com.giftech.githubuser.data.source.remote.response.UserFollowResponse
+import com.giftech.githubuser.utils.EspressoIdlingResource
 import retrofit2.Call
 import retrofit2.Response
 
 class RemoteDataSource {
 
     fun getSearchedUser(keyword:String, callback:GetSearchedUserCallback){
+        EspressoIdlingResource.increment()
         val client = ApiConfig.getApiService().getSearchedUser(keyword)
         client.enqueue(object : retrofit2.Callback<SearchUserResponse>{
             override fun onResponse(
@@ -19,6 +21,7 @@ class RemoteDataSource {
                 if(response.isSuccessful){
                     val res = response.body()?.items
                     callback.onResponseReceived(res!!)
+                    EspressoIdlingResource.decrement()
                 }
             }
 
@@ -30,6 +33,7 @@ class RemoteDataSource {
     }
 
     fun getDetailuser(username:String, callback:GetDetailUserCallback){
+        EspressoIdlingResource.increment()
         val client = ApiConfig.getApiService().getDetailUser(username)
         client.enqueue(object : retrofit2.Callback<DetailUserResponse>{
             override fun onResponse(
@@ -39,6 +43,7 @@ class RemoteDataSource {
                 if(response.isSuccessful){
                     val res = response.body()
                     callback.onResponseReceived(res!!)
+                    EspressoIdlingResource.decrement()
                 }
             }
 
