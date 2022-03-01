@@ -17,14 +17,14 @@
         android:layout_marginHorizontal="16dp"
         android:orientation="vertical">
         <TextView
-            android:id="@+id/iv_name"
+            android:id="@+id/tv_name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             tool:text="@string/example_name"
             style="@style/TextPrimaryBold"
             android:textSize="24sp"/>
         <TextView
-            android:id="@+id/iv_username"
+            android:id="@+id/tv_username"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             tool:text="@string/example_username"

@@ -65,8 +65,8 @@ class DetailActivity : AppCompatActivity() {
         with(binding.sectionProfile){
             header.ivAvatar.loadCircleImage(this@DetailActivity,user.avatar)
 
-            header.ivName.text = user.name
-            header.ivUsername.text = user.username
+            header.tvName.text = user.name
+            header.tvUsername.text = user.username
 
             desc.tvCompany.text = user.company
             desc.tvLocation.text = user.location
