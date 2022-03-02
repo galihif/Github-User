@@ -6,6 +6,7 @@
     <color name="grey_text">#B0B1B5</color>
     <color name="grey_icon">#696973</color>
     <color name="white_text">#FCFEFD</color>
+    <color name="blue">#2E90FE</color>
 
     <color name="white">#FFFFFFFF</color>
 </resources>

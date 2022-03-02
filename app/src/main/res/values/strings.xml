@@ -16,4 +16,5 @@
     <string name="format_follow">%1$d Followers | %2$d Following</string>
     <string name="search">Search</string>
     <string name="memuat_data">Memuat Data</string>
+    <string name="floating_action_button">Floating Action Button</string>
 </resources>
