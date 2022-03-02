@@ -1,6 +1,7 @@
 package com.giftech.githubuser.utils
 
 import com.giftech.githubuser.data.User
+import com.giftech.githubuser.data.source.local.entity.FavUserEntity
 import com.giftech.githubuser.data.source.remote.response.DetailUserResponse
 import com.giftech.githubuser.data.source.remote.response.SearchUserResponse
 import com.giftech.githubuser.data.source.remote.response.UserFollowResponse
@@ -42,6 +43,13 @@ object Mapper {
             listUser.add(user)
         }
         return listUser
+    }
+
+    fun mapUserToFavUserEntity(user:User):FavUserEntity{
+        return FavUserEntity(
+            username = user.username,
+            avatarUrl = user.avatar
+        )
     }
 
 }
