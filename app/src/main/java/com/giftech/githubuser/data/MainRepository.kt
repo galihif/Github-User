@@ -91,6 +91,15 @@ class MainRepository private constructor(
         return listFollowers
     }
 
+    fun getAllFavUser():LiveData<List<User>>{
+        val listUser = MutableLiveData<List<User>>()
+        appExecutors.diskIO().execute{
+            val listFavUser = localDataSource.getListFavUser()
+            listUser.postValue(Mapper.mapListFavUserEntityToListUser(listFavUser))
+        }
+        return listUser
+    }
+
     fun checkFavUserByUsername(username: String):LiveData<List<FavUserEntity>>{
         val listFavUserByUsername = MutableLiveData<List<FavUserEntity>>()
         appExecutors.diskIO().execute{
