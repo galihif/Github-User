@@ -17,4 +17,5 @@
     <string name="search">Search</string>
     <string name="memuat_data">Memuat Data</string>
     <string name="floating_action_button">Floating Action Button</string>
+    <string name="favourite">Favourite</string>
 </resources>

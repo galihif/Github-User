@@ -1,6 +1,5 @@
 package com.giftech.githubuser.data.source.local.room
 
-import androidx.lifecycle.LiveData
 import androidx.room.*
 import com.giftech.githubuser.data.source.local.entity.FavUserEntity
 
@@ -8,7 +7,7 @@ import com.giftech.githubuser.data.source.local.entity.FavUserEntity
 interface FavUserDao {
 
     @Query("SELECT * FROM favuserentities")
-    fun getListFavUser():LiveData<List<FavUserEntity>>
+    fun getListFavUser():List<FavUserEntity>
 
     @Transaction
     @Query("SELECT * FROM favuserentities WHERE username = :username")

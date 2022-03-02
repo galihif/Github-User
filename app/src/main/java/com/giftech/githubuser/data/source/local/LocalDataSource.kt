@@ -7,7 +7,7 @@ import com.giftech.githubuser.data.source.local.room.FavUserDao
 class LocalDataSource private constructor(private val favUserDao:FavUserDao){
 
 
-    fun getListFavUser():LiveData<List<FavUserEntity>> = favUserDao.getListFavUser()
+    fun getListFavUser():List<FavUserEntity> = favUserDao.getListFavUser()
     fun getFavUserByUsername(username:String):List<FavUserEntity> = favUserDao.getFavUserByUsername(username)
     fun insertFavUser(user:FavUserEntity) = favUserDao.insertFavUser(user)
     fun deleteFavUser(username:String) = favUserDao.deleteFavUser(username)
