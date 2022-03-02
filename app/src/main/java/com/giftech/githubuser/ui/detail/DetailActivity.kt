@@ -17,6 +17,10 @@ class DetailActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityDetailBinding
     private lateinit var viewModel: DetailViewModel
+
+    private var isFavourited = false
+    private lateinit var user: User
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityDetailBinding.inflate(layoutInflater)
@@ -33,6 +37,22 @@ class DetailActivity : AppCompatActivity() {
 
             viewModel.getDetailUser(username).observe(this, {
                 populateView(it)
+                user = it
+                checkIsFavourited()
+
+                binding.btnFav.setOnClickListener {
+                    if(isFavourited){
+                        viewModel.deleteFavUser(user.username)
+                        isFavourited = false
+                        setButtonFavourite()
+                        AppUtils.showToast(this, "User Removed from Favourite")
+                    } else{
+                        viewModel.insertFavUser(user)
+                        isFavourited = true
+                        setButtonFavourite()
+                        AppUtils.showToast(this, "User Saved to Favourite")
+                    }
+                }
             })
 
             viewModel.loading.observe(this){
@@ -45,6 +65,26 @@ class DetailActivity : AppCompatActivity() {
 
             showTabLayout(username)
 
+        }
+    }
+
+    private fun checkIsFavourited() {
+        viewModel.checkFavUserByUsername(user.username).observe(this){
+            if(it.isNotEmpty()){
+                isFavourited = true
+                setButtonFavourite()
+            } else{
+                isFavourited = false
+                setButtonFavourite()
+            }
+        }
+    }
+
+    private fun setButtonFavourite(){
+        if(isFavourited){
+            binding.btnFav.setImageResource(R.drawable.ic_favourited)
+        }else{
+            binding.btnFav.setImageResource(R.drawable.ic_favourite)
         }
     }
 

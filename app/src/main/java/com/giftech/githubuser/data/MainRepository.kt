@@ -3,6 +3,7 @@ package com.giftech.githubuser.data
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.giftech.githubuser.data.source.local.LocalDataSource
+import com.giftech.githubuser.data.source.local.entity.FavUserEntity
 import com.giftech.githubuser.data.source.remote.RemoteDataSource
 import com.giftech.githubuser.data.source.remote.response.DetailUserResponse
 import com.giftech.githubuser.data.source.remote.response.SearchUserResponse
@@ -88,6 +89,20 @@ class MainRepository private constructor(
             }
         })
         return listFollowers
+    }
+
+    fun checkFavUserByUsername(username: String):LiveData<List<FavUserEntity>>{
+        val listFavUserByUsername = MutableLiveData<List<FavUserEntity>>()
+        appExecutors.diskIO().execute{
+            listFavUserByUsername.postValue(localDataSource.getFavUserByUsername(username))
+        }
+        return listFavUserByUsername
+    }
+
+    fun deleteFavUser(username: String){
+        appExecutors.diskIO().execute{
+            localDataSource.deleteFavUser(username)
+        }
     }
 
     fun insertFavUser(user:User){

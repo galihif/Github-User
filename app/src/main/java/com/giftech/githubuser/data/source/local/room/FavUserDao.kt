@@ -12,7 +12,7 @@ interface FavUserDao {
 
     @Transaction
     @Query("SELECT * FROM favuserentities WHERE username = :username")
-    fun getFavUserByUsername(username:String):LiveData<FavUserEntity>
+    fun getFavUserByUsername(username:String):List<FavUserEntity>
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     fun insertFavUser(favUserEntity: FavUserEntity)

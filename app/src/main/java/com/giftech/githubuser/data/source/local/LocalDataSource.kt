@@ -8,7 +8,7 @@ class LocalDataSource private constructor(private val favUserDao:FavUserDao){
 
 
     fun getListFavUser():LiveData<List<FavUserEntity>> = favUserDao.getListFavUser()
-    fun getFavUserByUsername(username:String):LiveData<FavUserEntity> = favUserDao.getFavUserByUsername(username)
+    fun getFavUserByUsername(username:String):List<FavUserEntity> = favUserDao.getFavUserByUsername(username)
     fun insertFavUser(user:FavUserEntity) = favUserDao.insertFavUser(user)
     fun deleteFavUser(username:String) = favUserDao.deleteFavUser(username)
 
