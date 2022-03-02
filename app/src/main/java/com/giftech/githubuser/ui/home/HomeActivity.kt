@@ -5,6 +5,7 @@ import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.view.Menu
+import android.view.MenuItem
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.SearchView
@@ -15,6 +16,7 @@ import com.giftech.githubuser.adapter.UserAdapter
 import com.giftech.githubuser.data.User
 import com.giftech.githubuser.databinding.ActivityHomeBinding
 import com.giftech.githubuser.ui.detail.DetailActivity
+import com.giftech.githubuser.ui.favourite.FavouriteActivity
 import com.giftech.githubuser.utils.AppUtils
 import com.giftech.githubuser.viewmodel.ViewModelFactory
 
@@ -115,6 +117,16 @@ class HomeActivity : AppCompatActivity() {
             }
         })
 
+        return true
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        when(item.itemId){
+            R.id.item_favourite -> {
+                val intent = Intent(this, FavouriteActivity::class.java)
+                startActivity(intent)
+            }
+        }
         return true
     }
 }
