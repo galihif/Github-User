@@ -8,9 +8,9 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.giftech.githubuser.adapter.UserAdapter
 import com.giftech.githubuser.data.User
 import com.giftech.githubuser.databinding.FragmentFollowingBinding
-import com.giftech.githubuser.adapter.UserAdapter
 import com.giftech.githubuser.viewmodel.ViewModelFactory
 
 class FollowingFragment : Fragment() {
@@ -30,7 +30,7 @@ class FollowingFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val factory = ViewModelFactory.getInstance()
+        val factory = ViewModelFactory.getInstance(requireContext())
         val viewModel = ViewModelProvider(this,factory)[DetailViewModel::class.java]
         adapter = UserAdapter()
 

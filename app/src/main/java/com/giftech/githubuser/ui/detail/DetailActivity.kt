@@ -22,7 +22,7 @@ class DetailActivity : AppCompatActivity() {
         binding = ActivityDetailBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        val factory = ViewModelFactory.getInstance()
+        val factory = ViewModelFactory.getInstance(this)
         viewModel = ViewModelProvider(this,factory)[DetailViewModel::class.java]
 
         val extras = intent.extras

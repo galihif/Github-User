@@ -2,14 +2,18 @@ package com.giftech.githubuser.data
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
+import com.giftech.githubuser.data.source.local.LocalDataSource
 import com.giftech.githubuser.data.source.remote.RemoteDataSource
 import com.giftech.githubuser.data.source.remote.response.DetailUserResponse
 import com.giftech.githubuser.data.source.remote.response.SearchUserResponse
 import com.giftech.githubuser.data.source.remote.response.UserFollowResponse
+import com.giftech.githubuser.utils.AppExecutors
 import com.giftech.githubuser.utils.Mapper
 
-class MainRepository(
-    private val remoteDataSource: RemoteDataSource
+class MainRepository private constructor(
+    private val remoteDataSource: RemoteDataSource,
+    private val localDataSource: LocalDataSource,
+    private val appExecutors: AppExecutors
 ) {
 
     private val _loading = MutableLiveData<Boolean>()
@@ -86,12 +90,22 @@ class MainRepository(
         return listFollowers
     }
 
+    fun insertFavUser(user:User){
+        appExecutors.diskIO().execute{
+            localDataSource.insertFavUser(Mapper.mapUserToFavUserEntity(user))
+        }
+    }
+
     companion object {
         @Volatile
         private var instance: MainRepository? = null
-        fun getInstance(remoteDataSource: RemoteDataSource): MainRepository =
+        fun getInstance(
+            remoteDataSource: RemoteDataSource,
+            localDataSource: LocalDataSource,
+            appExecutors: AppExecutors
+        ): MainRepository =
             instance ?: synchronized(this) {
-                instance ?: MainRepository(remoteDataSource).apply { instance = this }
+                instance ?: MainRepository(remoteDataSource, localDataSource, appExecutors).apply { instance = this }
             }
     }
 

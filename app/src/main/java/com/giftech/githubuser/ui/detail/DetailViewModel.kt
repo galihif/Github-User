@@ -16,4 +16,6 @@ class DetailViewModel(private val mainRepository: MainRepository):ViewModel() {
 
     fun getUserFollowing(username:String):LiveData<List<User>> = mainRepository.getUserFollowingList(username)
 
+    fun insertFavUser(user:User) = mainRepository.insertFavUser(user)
+
 }

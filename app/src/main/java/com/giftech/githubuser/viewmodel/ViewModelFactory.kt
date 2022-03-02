@@ -1,6 +1,7 @@
 package com.giftech.githubuser.viewmodel
 
 import android.annotation.SuppressLint
+import android.content.Context
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import com.giftech.githubuser.data.MainRepository
@@ -30,9 +31,9 @@ class ViewModelFactory private constructor(private val mainRepository: MainRepos
         @Volatile
         private var instance: ViewModelFactory? = null
 
-        fun getInstance(): ViewModelFactory {
+        fun getInstance(context: Context): ViewModelFactory {
             return instance ?: synchronized(this) {
-                instance ?: ViewModelFactory(Injection.provideRepository()).apply {
+                instance ?: ViewModelFactory(Injection.provideRepository(context)).apply {
                     instance = this
                 }
             }
