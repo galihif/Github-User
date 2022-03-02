@@ -52,4 +52,13 @@ object Mapper {
         )
     }
 
+    fun mapListFavUserEntityToListUser(listFavUser:List<FavUserEntity>):List<User>{
+        val listUser = ArrayList<User>()
+        listFavUser.forEach {
+            val user = User(username = it.username, avatar = it.avatarUrl)
+            listUser.add(user)
+        }
+        return listUser
+    }
+
 }
