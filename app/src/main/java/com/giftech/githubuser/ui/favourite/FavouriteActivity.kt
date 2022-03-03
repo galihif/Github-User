@@ -1,7 +1,9 @@
 package com.giftech.githubuser.ui.favourite
 
+import android.annotation.SuppressLint
 import android.content.Intent
 import android.os.Bundle
+import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -31,8 +33,20 @@ class FavouriteActivity : AppCompatActivity() {
         viewModel.getAllFavUser().observe(this){
             adapter.setList(it)
             showListUser()
+            showEmpty(it.isEmpty())
         }
     }
+
+    @SuppressLint("SetTextI18n")
+    private fun showEmpty(listEmpty: Boolean) {
+        if(listEmpty){
+            binding.empty.root.visibility = View.VISIBLE
+            binding.empty.emptyDesc.text = "You Don't Have a Favorite User"
+        }else{
+            binding.empty.root.visibility = View.INVISIBLE
+        }
+    }
+
 
     private fun showListUser() {
         with(binding.rvFavourite){
