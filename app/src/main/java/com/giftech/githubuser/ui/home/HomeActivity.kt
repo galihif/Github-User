@@ -1,5 +1,6 @@
 package com.giftech.githubuser.ui.home
 
+import android.annotation.SuppressLint
 import android.app.SearchManager
 import android.content.Context
 import android.content.Intent
@@ -53,9 +54,11 @@ class HomeActivity : AppCompatActivity() {
 
     }
 
+    @SuppressLint("SetTextI18n")
     private fun showEmpty(listEmpty: Boolean) {
         if(listEmpty){
             binding.empty.root.visibility = View.VISIBLE
+            binding.empty.emptyDesc.text = "User Not Found. Please Try Different Keyword"
             binding.rvUser.visibility = View.INVISIBLE
         }else{
             binding.empty.root.visibility = View.INVISIBLE
