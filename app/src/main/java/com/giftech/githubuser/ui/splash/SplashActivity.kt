@@ -8,14 +8,19 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.lifecycle.ViewModelProvider
 import com.giftech.githubuser.R
+import com.giftech.githubuser.databinding.ActivitySplashBinding
 import com.giftech.githubuser.ui.home.HomeActivity
 import com.giftech.githubuser.viewmodel.ViewModelFactory
 
 
 class SplashActivity : AppCompatActivity() {
+
+    private lateinit var binding:ActivitySplashBinding
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_splash)
+        binding = ActivitySplashBinding.inflate(layoutInflater)
+        setContentView(binding.root)
 
         val factory = ViewModelFactory.getInstance(this)
         val viewModel = ViewModelProvider(this,factory)[SplashViewModel::class.java]
@@ -36,8 +41,10 @@ class SplashActivity : AppCompatActivity() {
     private fun setTheme(isDark: Boolean) {
         if (isDark) {
             AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
+            binding.logo.setImageResource(R.drawable.dark_logo)
         } else {
             AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
+            binding.logo.setImageResource(R.drawable.light_logo)
         }
     }
 }
