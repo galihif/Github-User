@@ -9,6 +9,8 @@ import com.giftech.githubuser.di.Injection
 import com.giftech.githubuser.ui.detail.DetailViewModel
 import com.giftech.githubuser.ui.favourite.FavouriteViewModel
 import com.giftech.githubuser.ui.home.HomeViewModel
+import com.giftech.githubuser.ui.settings.SettingsViewModel
+import com.giftech.githubuser.ui.splash.SplashViewModel
 
 class ViewModelFactory private constructor(private val mainRepository: MainRepository)
     : ViewModelProvider.NewInstanceFactory(){
@@ -24,6 +26,12 @@ class ViewModelFactory private constructor(private val mainRepository: MainRepos
             }
             modelClass.isAssignableFrom(FavouriteViewModel::class.java)->{
                 FavouriteViewModel(mainRepository) as T
+            }
+            modelClass.isAssignableFrom(SplashViewModel::class.java)->{
+                SplashViewModel(mainRepository) as T
+            }
+            modelClass.isAssignableFrom(SettingsViewModel::class.java)->{
+                SettingsViewModel(mainRepository) as T
             }
 
             else -> throw Throwable("Unknown ViewModel class: " + modelClass.name)
