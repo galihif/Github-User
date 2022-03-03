@@ -120,6 +120,10 @@ class MainRepository private constructor(
         }
     }
 
+    fun setDarkTheme(isDark:Boolean) = localDataSource.setDarkTheme(isDark)
+
+    fun getIsDarkTheme():Boolean = localDataSource.getIsDarkTheme()
+
     companion object {
         @Volatile
         private var instance: MainRepository? = null
