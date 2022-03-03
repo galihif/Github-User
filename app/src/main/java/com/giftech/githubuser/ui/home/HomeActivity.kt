@@ -17,6 +17,7 @@ import com.giftech.githubuser.data.User
 import com.giftech.githubuser.databinding.ActivityHomeBinding
 import com.giftech.githubuser.ui.detail.DetailActivity
 import com.giftech.githubuser.ui.favourite.FavouriteActivity
+import com.giftech.githubuser.ui.settings.SettingsActivity
 import com.giftech.githubuser.utils.AppUtils
 import com.giftech.githubuser.viewmodel.ViewModelFactory
 
@@ -124,6 +125,10 @@ class HomeActivity : AppCompatActivity() {
         when(item.itemId){
             R.id.item_favourite -> {
                 val intent = Intent(this, FavouriteActivity::class.java)
+                startActivity(intent)
+            }
+            R.id.item_settings -> {
+                val intent = Intent(this, SettingsActivity::class.java)
                 startActivity(intent)
             }
         }

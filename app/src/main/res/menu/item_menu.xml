@@ -6,10 +6,16 @@
         android:icon="@drawable/ic_search"
         android:title="@string/search"
         app:actionViewClass="androidx.appcompat.widget.SearchView"
-        app:showAsAction="collapseActionView|always" />
+        app:showAsAction="collapseActionView|ifRoom" />
     <item
         android:id="@+id/item_favourite"
         android:icon="@drawable/ic_favourited"
         android:title="@string/favourite"
-        app:showAsAction="ifRoom"/>
+        app:showAsAction="never"/>
+    <item
+        android:id="@+id/item_settings"
+        android:icon="@drawable/ic_favourited"
+        android:title="@string/settings"
+        app:showAsAction="never"/>
+
 </menu>

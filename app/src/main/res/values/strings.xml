@@ -18,4 +18,6 @@
     <string name="memuat_data">Memuat Data</string>
     <string name="floating_action_button">Floating Action Button</string>
     <string name="favourite">Favourite</string>
+    <string name="dark_mode">Dark Mode</string>
+    <string name="settings">Settings</string>
 </resources>
