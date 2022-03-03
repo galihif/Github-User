@@ -1,12 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <color name="black_bg">#050505</color>
-    <color name="grey_bg">#17181C</color>
-    <color name="grey_text">#B0B1B5</color>
-    <color name="grey_icon">#696973</color>
-    <color name="white_text">#FCFEFD</color>
-    <color name="blue">#2E90FE</color>
+    <color name="dark_primary">#17181C</color>
+    <color name="dark_secondary">#2E90FE</color>
+    <color name="dark_text_primary">#FCFEFD</color>
+    <color name="dark_text_secondary">#B0B1B5</color>
+    <color name="dark_icon">#696973</color>
+    <color name="dark_bg">#050505</color>
+    <color name="dark_on_primary">#FFFFFFFF</color>
+    <color name="dark_on_secondary">#FFFFFFFF</color>
 
-    <color name="white">#FFFFFFFF</color>
+
+    <color name="light_primary">#FFFFFF</color>
+    <color name="light_secondary">#0365D6</color>
+    <color name="light_text_primary">#050505</color>
+    <color name="light_text_secondary">#6B6D6C</color>
+    <color name="light_icon">#696973</color>
+    <color name="light_bg">#EFF0F5</color>
+    <color name="light_on_primary">#000000</color>
+    <color name="light_on_secondary">#FFFFFFFF</color>
+
+
 </resources>
