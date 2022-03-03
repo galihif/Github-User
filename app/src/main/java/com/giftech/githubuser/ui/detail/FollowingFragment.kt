@@ -1,5 +1,6 @@
 package com.giftech.githubuser.ui.detail
 
+import android.annotation.SuppressLint
 import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -41,7 +42,18 @@ class FollowingFragment : Fragment() {
             adapter.setList(it)
             showListUser()
             showLoading(false)
+            showEmpty(it.isEmpty())
         })
+    }
+
+    @SuppressLint("SetTextI18n")
+    private fun showEmpty(listEmpty: Boolean) {
+        if(listEmpty){
+            binding.empty.root.visibility = View.VISIBLE
+            binding.empty.emptyDesc.text = "This User Doesn't Follow Anyone"
+        }else{
+            binding.empty.root.visibility = View.INVISIBLE
+        }
     }
 
     private fun showLoading(loading:Boolean){
