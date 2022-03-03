@@ -2,7 +2,6 @@
     <string name="app_name">Github User</string>
     <string name="nama_user">Nama User</string>
 
-    <string name="username">username</string>
     <string name="user_avatar">User Avatar</string>
 
     <string name="example_follow">23 Following | 92 Followers</string>
